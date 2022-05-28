@@ -28,7 +28,7 @@ class DiscordConnection : Connection {
             $headers = @{
                 Authorization = "Bot $($this.Config.Credential.GetNetworkCredential().password)"
             }
-            $this.GatewayInfo = Invoke-RestMethod -Uri 'https://discord.com/api/gateway/bot' -Headers $headers -UserAgent 'PoshBot'
+            $this.GatewayInfo = Invoke-RestMethod -Uri 'https://discord.com/api/gateway/bot' -Headers $headers -UserAgent 'PoshBot (https://github.com/poshbotio/PoshBot, 1)'
             $this.GatewayUrl = "$($this.GatewayInfo.url)/v=6&encoding=json"
         } catch {
             $this.LogInfo([LogSeverity]::Error, 'Unable to determine Discord gateway URL', [ExceptionFormatter]::Summarize($_))
